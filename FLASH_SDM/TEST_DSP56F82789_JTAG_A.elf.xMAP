@@ -1,0 +1,84 @@
+
+
+
+# .interrupt_vectors
+#>00000000          F_vector_addr (linker command file)
+  00000000 000000DE interrupt_vectors.text F_vect	(Vectors_c.obj)
+
+# .reserved_FCF
+#>00000200          F_FCF_addr (linker command file)
+
+# .ApplicationCode
+#>00000208          F_Pcode_start_addr (linker command file)
+  00000208 00000009 .text   FSetCV	(TI1_c.obj)
+  00000211 00000013 .text   FSetPV	(TI1_c.obj)
+  00000224 00000012 .text   FTI1_Init	(TI1_c.obj)
+  00000236 00000011 .text   FTI1_Interrupt	(TI1_c.obj)
+  00000247 00000007 .text   FCpu_Interrupt	(Cpu_c.obj)
+  0000024E 00000045 .text   F_EntryPoint	(Cpu_c.obj)
+  00000293 0000011F .text   FPE_low_level_init	(Cpu_c.obj)
+  000003B2 00000014 .text   FBits2_GetMsk	(Bits2_c.obj)
+  000003C6 00000012 .text   FBits2_NegBit	(Bits2_c.obj)
+  000003D8 00000014 .text   FBits1_GetMsk	(Bits1_c.obj)
+  000003EC 00000012 .text   FBits1_NegBit	(Bits1_c.obj)
+  000003FE 00000003 .text   Fmain	(main_c.obj)
+  00000401 00000048 .text   FTI1_OnInterrupt	(Events_c.obj)
+  00000449 00000042 rtlib.text rtlib.text	(runtime 56800E smm.lib save_reg.o     )
+  00000449 00000023 rtlib.text INTERRUPT_SAVEALL	(runtime 56800E smm.lib save_reg.o     )
+  0000046C 0000001F rtlib.text INTERRUPT_RESTOREALL	(runtime 56800E smm.lib save_reg.o     )
+  0000048B 0000007D startup.text Finit_56800_	(56F83x_init_asm.obj)
+  0000048B 0000007D startup.text startup.text	(56F83x_init_asm.obj)
+#>00000508          F_Pcode_end_addr (linker command file)
+#>00000508          __pROM_data_start (linker command file)
+
+# .data_in_p_flash_ROM
+#>00000000          __xRAM_data_start (linker command file)
+  00000000 00000004 .const.data FBits2_Table	(Bits2_c.obj)
+  00000004 00000004 .const.data FBits1_Table	(Bits1_c.obj)
+#>00000008          __xRAM_data_end (linker command file)
+#>00000008          __data_size (linker command file)
+
+# .ApplicationData
+#>00000008          F_Xbss_start_addr (linker command file)
+#>00000008          _START_BSS (linker command file)
+  00000008 00000001 .bss    F_ZZ15TI1_OnInterruptvE1i	(Events_c.obj)
+#>0000000A          _END_BSS (linker command file)
+#>00000002          F_Xbss_length (linker command file)
+#>0000000C          _HEAP_ADDR (linker command file)
+#>00000100          _HEAP_SIZE (linker command file)
+#>0000010C          _HEAP_END (linker command file)
+#>00000200          _min_stack_size (linker command file)
+#>0000010C          _stack_addr (linker command file)
+#>0000030C          _stack_end (linker command file)
+#>0000000C          F_heap_addr (linker command file)
+#>0000010C          F_heap_end (linker command file)
+#>0000010C          F_Lstack_addr (linker command file)
+#>0000010C          F_StackAddr (linker command file)
+#>0000030B          F_StackEndAddr (linker command file)
+#>00000008          F_Ldata_size (linker command file)
+#>00000000          F_Ldata_RAM_addr (linker command file)
+#>00000508          F_Ldata_ROM_addr (linker command file)
+#>00000000          F_Livt_size (linker command file)
+#>00000000          F_Livt_RAM_addr (linker command file)
+#>00000000          F_Livt_ROM_addr (linker command file)
+#>00000000          F_xROM_to_xRAM (linker command file)
+#>00000001          F_pROM_to_xRAM (linker command file)
+#>00000000          F_pROM_to_pRAM (linker command file)
+#>00000008          F_start_bss (linker command file)
+#>0000000A          F_end_bss (linker command file)
+#>0000030C          __DATA_END (linker command file)
+
+
+# Memory map:
+  v_addr   p_addr   size     name
+  0000C000 0000C000 00000000            .x_Peripherals
+  00000000 00000000 000000DE .interrupt_vectors .p_Interrupts
+  00000208 00000208 00000300 .ApplicationCode .p_Code
+  00000000 00000000 0000030C .ApplicationData .x_Data
+  00000200 00000200 00000000 .reserved_FCF .p_reserved_FCF
+  00000508 00000000 00000008 .data_in_p_flash_ROM .p_flash_ROM_data
+  00008000 00008000 00004000            .x_internal_ROM
+  00060000 00060000 00004000            .p_internal_RAM
+
+# Link start time: Thu Oct 01 17:04:12 2020
+# Link end time: Thu Oct 01 17:04:12 2020
